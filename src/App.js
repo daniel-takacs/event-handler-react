@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import EventHandler from './EventHandler';
+import Form from './Form';
+import React, { Component } from 'react';
+import UserList from './UserList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    title: "Text"
+    
+  }
+
+  titleHandler = (newValue) => {
+    this.setState({ title: newValue});
+    
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Form titleHandler={this.titleHandler} inputValue={this.state.title}/>
+        <h2>{this.state.title}</h2>
+      <EventHandler />
+      <UserList />
+      </div>
+    );
+  }
 }
 
 export default App;
