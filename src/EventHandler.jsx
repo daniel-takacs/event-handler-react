@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import { getSuggestedQuery } from '@testing-library/react';
+import React, { useState } from 'react';
 import './EventHandler.css'
 
-export default class EventHandler extends Component {
+export default function EventHandler (props) {
 
-    state = {
-        click: 0
-    }
+    const [click, setClick] = useState(0);
 
-    onClickHandler = ()=> {
-       this.setState({ click: this.state.click + 1})
-       console.log(this.state.click)
+    const onClickHandler = ()=> {
+      setClick(click + 1);
+       console.log(click)
     }
-    render() {
+    
         return (
             <div>
-                <div className="clickme" onClick={this.onClickHandler}>Click me {this.state.click}</div>
+                <div className="clickme" onClick={onClickHandler}>Click me {click}</div>
             </div>
         )
-    }
+    
 }
